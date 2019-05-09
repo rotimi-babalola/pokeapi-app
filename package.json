@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/rotimi-babalola/pokeapi-app/issues"
   },
-  "homepage": "https://github.com/rotimi-babalola/pokeapi-app#readme"
+  "homepage": "https://github.com/rotimi-babalola/pokeapi-app#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0"
+  }
 }
