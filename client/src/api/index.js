@@ -11,14 +11,9 @@ class PokeAPIWrapper {
    * @param {number} offset - page number to get
    */
   async getAllPokemonSpecies(limit = 20, offset = 0) {
-    try {
-      const response = await this.axiosInstance.get(
-        `/pokemon-species?offset=${offset}&limit=${limit}`,
-      );
-      return response.data;
-    } catch (error) {
-      return error;
-    }
+    return this.axiosInstance.get(
+      `/pokemon-species?offset=${offset}&limit=${limit}`,
+    );
   }
 
   /**
@@ -26,23 +21,11 @@ class PokeAPIWrapper {
    * @param {string | number} idOrName - id or name of pokemon
    */
   async getPokemonSpecie(idOrName) {
-    try {
-      const response = await this.axiosInstance.get(
-        `/pokemon-species?${idOrName}`,
-      );
-      return response.data;
-    } catch (error) {
-      return error;
-    }
+    return this.axiosInstance.get(`/pokemon-species?${idOrName}`);
   }
 
   async getPokemonEvolutionData(id) {
-    try {
-      const response = await this.axiosInstance.get(`/evolution-chain/${id}`);
-      return response.data;
-    } catch (error) {
-      return error;
-    }
+    return this.axiosInstance.get(`/evolution-chain/${id}`);
   }
 }
 
