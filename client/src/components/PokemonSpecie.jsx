@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
-import { getIdFromURL } from '../utils/getIdFromURL';
+import { getIdFromURL } from '../utils';
 import pokeApiWrapper from '../api';
 
 import '../styles/pokemon-specie.scss';
