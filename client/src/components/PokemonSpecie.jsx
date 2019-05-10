@@ -33,7 +33,7 @@ class PokemonSpecie extends React.Component {
   render() {
     const { name } = this.props;
     if (isEmpty(this.state.speciesData)) {
-      return <h1>Loading...</h1>;
+      return <p>Loading...</p>;
     }
 
     if (this.state.error) {
@@ -42,14 +42,38 @@ class PokemonSpecie extends React.Component {
 
     return (
       <React.Fragment>
-        <li className="list-items">
-          <h4 className="pokemon-name">{`Name: ${name}`}</h4>
-          <p>{`Color: ${this.state.speciesData.color.name}`}</p>
-          <p>{`Shape: ${this.state.speciesData.shape.name}`}</p>
-          <p>{`Habitat: ${this.state.speciesData.habitat.name}`}</p>
-          <p>{`Growth Rate: ${this.state.speciesData.growth_rate.name}`}</p>
-        </li>
-        <button type="button">Show Evolution Chain</button>
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">{name}</h5>
+            <p className="card-text">
+              Color:&nbsp;
+              <span className="card-text__span">
+                {this.state.speciesData.color.name}
+              </span>
+            </p>
+            <p className="card-text">
+              Shape:&nbsp;
+              <span className="card-text__span">
+                {this.state.speciesData.shape.name}
+              </span>
+            </p>
+            <p className="card-text">
+              Habitat:&nbsp;
+              <span className="card-text__span">
+                {this.state.speciesData.habitat.name}
+              </span>
+            </p>
+            <p className="card-text">
+              Growth Rate:&nbsp;
+              <span className="card-text__span">
+                {this.state.speciesData.growth_rate.name}
+              </span>
+            </p>
+            <button type="button" className="btn btn-primary">
+              Show Evolution Chain
+            </button>
+          </div>
+        </div>
       </React.Fragment>
     );
   }

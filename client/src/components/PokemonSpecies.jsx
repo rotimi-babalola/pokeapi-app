@@ -5,7 +5,7 @@ import PokemonSpecie from './PokemonSpecie';
 
 import '../styles/pokemon-species.scss';
 
-const LIMIT = 10;
+const LIMIT = 12;
 
 class PokemonSpecies extends React.Component {
   constructor(props) {
@@ -42,13 +42,11 @@ class PokemonSpecies extends React.Component {
     return (
       <React.Fragment>
         <h1 className="heading">Pokemon Species</h1>
-        <ul>
+        <div className="card-wrapper">
           {this.state.pokemonSpecies.map(el => (
-            <div key={uniqueId()} className="list-items-wrapper">
-              <PokemonSpecie name={el.name} url={el.url} />
-            </div>
+            <PokemonSpecie name={el.name} url={el.url} key={uniqueId()} />
           ))}
-        </ul>
+        </div>
       </React.Fragment>
     );
   }
