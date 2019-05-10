@@ -6,6 +6,10 @@
   margin-bottom: 15px;
   background: #d3d3d3;
   color: #505050;
-  width: 150px;
+  width: fit-content;
   margin-right: 10px;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
 }

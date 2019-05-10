@@ -21,7 +21,7 @@ class PokeAPIWrapper {
    * @param {string | number} idOrName - id or name of pokemon
    */
   async getPokemonSpecie(idOrName) {
-    return this.axiosInstance.get(`/pokemon-species?${idOrName}`);
+    return this.axiosInstance.get(`/pokemon-species/${idOrName}`);
   }
 
   async getPokemonEvolutionData(id) {

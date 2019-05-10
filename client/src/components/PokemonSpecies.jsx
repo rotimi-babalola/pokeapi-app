@@ -1,7 +1,6 @@
 import React from 'react';
 import { uniqueId } from 'lodash';
 import pokeApiWrapper from '../api';
-// import { getIdfromURL } from '../utils/getIdFromURL';
 import PokemonSpecie from './PokemonSpecie';
 
 import '../styles/pokemon-species.scss';
@@ -14,20 +13,30 @@ class PokemonSpecies extends React.Component {
 
     this.state = {
       pokemonSpecies: [],
+      error: false,
     };
   }
 
-  componentDidMount() {
-    pokeApiWrapper.getAllPokemonSpecies(LIMIT).then(response => {
+  async componentDidMount() {
+    try {
+      const response = await pokeApiWrapper.getAllPokemonSpecies(LIMIT);
       this.setState({
         pokemonSpecies: response.data.results,
       });
-    });
+    } catch (error) {
+      this.setState({
+        error: true,
+      });
+    }
   }
 
   render() {
     if (!this.state.pokemonSpecies.length) {
       return <h1>Loading...</h1>;
+    }
+
+    if (this.state.error) {
+      return <h1>An error occurred</h1>;
     }
 
     return (

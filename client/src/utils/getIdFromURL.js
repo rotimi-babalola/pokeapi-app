@@ -4,7 +4,7 @@
  * it returns 14
  * @param {string} url - url to extract id from
  */
-export const getIdfromURL = url => {
+export const getIdFromURL = url => {
   // remove last '/'
   const newURL = url.substring(0, url.length - 1);
 
