@@ -34,6 +34,7 @@ class PokemonEvolutionChain extends React.Component {
   }
 
   render() {
+    const { name } = this.props.match.params;
     if (isEmpty(this.state.evolutionChain)) {
       return <p>Loading...</p>;
     }
@@ -43,7 +44,7 @@ class PokemonEvolutionChain extends React.Component {
 
     return (
       <React.Fragment>
-        <h3>Evolution chain</h3>
+        <h3>{`Evolution chain for ${name}`}</h3>
         <div className="evolution-chain-wrapper">
           {this.state.evolutionChain.map(el => (
             <PokemonSpecie

@@ -85,7 +85,7 @@ class PokemonSpecie extends React.Component {
               </span>
             </p>
             {showEvolutionButton && (
-              <Link to={`/evolution-chain/${evolutionChainId}`}>
+              <Link to={`/evolution-chain/${evolutionChainId}/${name}`}>
                 <button type="button" className="btn btn-primary">
                   Show Evolution Chain
                 </button>

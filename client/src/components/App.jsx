@@ -11,7 +11,7 @@ const App = () => (
       <Route exact path="/" component={PokemonSpecies} />
       <Route
         exact
-        path="/evolution-chain/:id"
+        path="/evolution-chain/:id/:name"
         component={PokemonEvolutionChain}
       />
     </Switch>
