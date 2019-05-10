@@ -1,15 +1,11 @@
-.list-items {
-  list-style-type: none;
-  position: relative;
-  font-size: medium;
-  padding: 20px;
-  margin-bottom: 15px;
-  background: #d3d3d3;
-  color: #505050;
-  width: fit-content;
-  margin-right: 10px;
+.card-title, .card-text {
+  text-transform: capitalize;
 }
 
-.pokemon-name {
-  text-transform: capitalize;
+.card-text {
+  font-weight: normal;
+  font-size: medium;
+  &__span {
+    font-weight: lighter;
+  }
 }
