@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import { getIdFromURL } from '../utils';
 import pokeApiWrapper from '../api';
@@ -13,13 +14,20 @@ class PokemonSpecie extends React.Component {
       speciesData: {},
       error: false,
     };
+    this.getEvolutionChainId = this.getEvolutionChainId.bind(this);
   }
 
   async componentDidMount() {
-    const specieId = getIdFromURL(this.props.url);
+    // if the url is not available search by name
+    let searchQuery;
+    if (this.props.url) {
+      searchQuery = getIdFromURL(this.props.url);
+    } else {
+      searchQuery = this.props.name;
+    }
     // make api call
     try {
-      const response = await pokeApiWrapper.getPokemonSpecie(specieId);
+      const response = await pokeApiWrapper.getPokemonSpecie(searchQuery);
       this.setState({
         speciesData: response.data,
       });
@@ -30,8 +38,13 @@ class PokemonSpecie extends React.Component {
     }
   }
 
+  getEvolutionChainId() {
+    const { url } = this.state.speciesData.evolution_chain;
+    return getIdFromURL(url);
+  }
+
   render() {
-    const { name } = this.props;
+    const { name, showEvolutionButton } = this.props;
     if (isEmpty(this.state.speciesData)) {
       return <p>Loading...</p>;
     }
@@ -39,6 +52,8 @@ class PokemonSpecie extends React.Component {
     if (this.state.error) {
       return <p>An error occurred fetching data for this pokemon</p>;
     }
+
+    const evolutionChainId = this.getEvolutionChainId();
 
     return (
       <React.Fragment>
@@ -69,9 +84,13 @@ class PokemonSpecie extends React.Component {
                 {this.state.speciesData.growth_rate.name}
               </span>
             </p>
-            <button type="button" className="btn btn-primary">
-              Show Evolution Chain
-            </button>
+            {showEvolutionButton && (
+              <Link to={`/evolution-chain/${evolutionChainId}`}>
+                <button type="button" className="btn btn-primary">
+                  Show Evolution Chain
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </React.Fragment>
@@ -79,9 +98,14 @@ class PokemonSpecie extends React.Component {
   }
 }
 
+PokemonSpecie.defaultProps = {
+  showEvolutionButton: true,
+};
+
 PokemonSpecie.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  showEvolutionButton: PropTypes.bool,
 };
 
 export default PokemonSpecie;

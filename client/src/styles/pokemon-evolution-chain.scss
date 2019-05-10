@@ -1,0 +1,9 @@
+.evolution-chain-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.home {
+  margin-top: 10px;
+}

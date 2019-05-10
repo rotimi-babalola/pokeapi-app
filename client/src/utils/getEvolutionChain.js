@@ -2,7 +2,7 @@
  * Gets evolution chain data for a pokemon
  * @param {object} data - response from PokeAPI
  */
-export const getEvolutionData = data => {
+export const getEvolutionChain = data => {
   const evolutionChain = [];
   let evolutionData = data.chain;
 
@@ -18,9 +18,9 @@ export const getEvolutionData = data => {
     });
 
     evolutionData = evolutionData.evolves_to[0];
-    return evolutionChain;
   } while (
     Boolean(evolutionData) &&
     evolutionData.hasOwnProperty('evolves_to')
   );
+  return evolutionChain;
 };
