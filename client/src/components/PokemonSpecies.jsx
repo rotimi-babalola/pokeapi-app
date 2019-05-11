@@ -1,5 +1,5 @@
 import React from 'react';
-import { uniqueId } from 'lodash';
+import { uniqueId, isEmpty } from 'lodash';
 
 import pokeApiWrapper from '../api';
 
@@ -18,9 +18,14 @@ class PokemonSpecies extends React.Component {
     this.state = {
       pokemonSpecies: [],
       error: false,
+      filtered: [],
+      searchQuery: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.filterSpecies = this.filterSpecies.bind(this);
+    this.renderItems = this.renderItems.bind(this);
   }
 
   async componentDidMount() {
@@ -34,6 +39,24 @@ class PokemonSpecies extends React.Component {
         error: true,
       });
     }
+  }
+
+  filterSpecies(query) {
+    const { pokemonSpecies } = this.state;
+    const filtered = pokemonSpecies.filter(el => el.name.includes(query));
+    this.setState({
+      filtered,
+    });
+  }
+
+  handleInputChange(evt) {
+    const searchQuery = evt.target.value;
+    this.setState(
+      {
+        searchQuery,
+      },
+      () => this.filterSpecies(this.state.searchQuery),
+    );
   }
 
   async handleChange(evt) {
@@ -69,6 +92,20 @@ class PokemonSpecies extends React.Component {
     }
   }
 
+  renderItems() {
+    if (this.state.searchQuery && !isEmpty(this.state.filtered)) {
+      return this.state.filtered.map(el => (
+        <PokemonSpecie name={el.name} url={el.url} key={uniqueId()} />
+      ));
+    }
+    if (this.state.searchQuery && isEmpty(this.state.filtered)) {
+      return <p>Pokemon not found :(</p>;
+    }
+    return this.state.pokemonSpecies.map(el => (
+      <PokemonSpecie name={el.name} url={el.url} key={uniqueId()} />
+    ));
+  }
+
   render() {
     if (!this.state.pokemonSpecies.length) {
       return <Loading />;
@@ -81,12 +118,11 @@ class PokemonSpecies extends React.Component {
     return (
       <React.Fragment>
         <h1 className="heading">Pokemon Species</h1>
-        <Controls onChange={this.handleChange} />
-        <div className="card-wrapper">
-          {this.state.pokemonSpecies.map(el => (
-            <PokemonSpecie name={el.name} url={el.url} key={uniqueId()} />
-          ))}
-        </div>
+        <Controls
+          onChange={this.handleChange}
+          onInputChange={this.handleInputChange}
+        />
+        <div className="card-wrapper">{this.renderItems()}</div>
       </React.Fragment>
     );
   }
