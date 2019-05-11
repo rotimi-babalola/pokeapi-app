@@ -7,3 +7,18 @@
 .home {
   margin-top: 10px;
 }
+
+@media (max-width: 980px) {
+  .evolution-chain-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .evolution-chain-wrapper {
+    display: block;
+  }
+}
