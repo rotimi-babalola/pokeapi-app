@@ -17,11 +17,13 @@ class PokemonSpecie extends React.Component {
       speciesData: {},
       error: false,
     };
+    this._isMounted = false;
     this.getEvolutionChainId = this.getEvolutionChainId.bind(this);
     this.renderCardContent = this.renderCardContent.bind(this);
   }
 
   async componentDidMount() {
+    this._isMounted = true;
     // if the url is not available search by name
     let searchQuery;
     if (this.props.url) {
@@ -29,17 +31,25 @@ class PokemonSpecie extends React.Component {
     } else {
       searchQuery = this.props.name;
     }
-    // make api call
+
     try {
       const response = await pokeApiWrapper.getPokemonSpecie(searchQuery);
-      this.setState({
-        speciesData: response.data,
-      });
+      // workaround for prevent setState on unmounted component warning
+      if (this._isMounted) {
+        this.setState({
+          speciesData: response.data,
+        });
+      }
     } catch (error) {
       this.setState({
         error: true,
       });
     }
+  }
+
+  componentWillUnmount() {
+    // pokeApiWrapper.cancelRequest();
+    this._isMounted = false;
   }
 
   getEvolutionChainId() {
