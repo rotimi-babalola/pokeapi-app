@@ -1,0 +1,17 @@
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 25%
+}
+
+.spinner-border {
+  &.small {
+    height: 25px;
+    width: 25px;
+  }
+
+  &.large {
+    height: 100px;
+    width: 100px;
+  }
+}

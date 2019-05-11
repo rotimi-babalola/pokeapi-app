@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty, uniqueId } from 'lodash';
 import { Link } from 'react-router-dom';
+
 import pokeApiWrapper from '../api';
 import { getEvolutionChain } from '../utils';
+
 import PokemonSpecie from './PokemonSpecie';
+import Loading from './Loading';
 
 import '../styles/pokemon-evolution-chain.scss';
 
@@ -36,7 +39,7 @@ class PokemonEvolutionChain extends React.Component {
   render() {
     const { name } = this.props.match.params;
     if (isEmpty(this.state.evolutionChain)) {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
     if (this.state.error) {
       return <p>An error occurred fetching evolution data</p>;

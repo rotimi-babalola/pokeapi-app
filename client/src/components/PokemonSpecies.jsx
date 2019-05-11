@@ -2,6 +2,7 @@ import React from 'react';
 import { uniqueId } from 'lodash';
 import pokeApiWrapper from '../api';
 import PokemonSpecie from './PokemonSpecie';
+import Loading from './Loading';
 
 import '../styles/pokemon-species.scss';
 
@@ -32,7 +33,7 @@ class PokemonSpecies extends React.Component {
 
   render() {
     if (!this.state.pokemonSpecies.length) {
-      return <h1>Loading...</h1>;
+      return <Loading />;
     }
 
     if (this.state.error) {
