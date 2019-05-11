@@ -9,7 +9,7 @@ const Controls = ({ onChange }) => (
       <p>Sort by: </p>
       <select className="form-control select" onChange={onChange}>
         <option value="default">Default</option>
-        <option value="name">Name</option>
+        <option value="name">Pokemon Name</option>
       </select>
     </div>
     <input type="text" className="form-control" placeholder="Search by name" />
