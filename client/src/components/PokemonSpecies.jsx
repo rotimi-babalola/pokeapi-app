@@ -43,6 +43,7 @@ class PokemonSpecies extends React.Component {
     return (
       <React.Fragment>
         <h1 className="heading">Pokemon Species</h1>
+        <div className="controls-container">kfkf</div>
         <div className="card-wrapper">
           {this.state.pokemonSpecies.map(el => (
             <PokemonSpecie name={el.name} url={el.url} key={uniqueId()} />
