@@ -9,6 +9,9 @@
         "react/destructuring-assignment": "off",
         "no-prototype-builtins": "off",
         "prefer-destructuring": "off",
-        "operator-linebreak": "off"
+        "operator-linebreak": "off",
+        "implicit-arrow-linebreak": "off",
+        "function-paren-newline": "off",
+        "no-underscore-dangle": "off"
     }
 }

@@ -1,3 +1,11 @@
+.card {
+  transition: box-shadow 0.5s;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
 .card-title, .card-text {
   text-transform: capitalize;
 }
@@ -7,5 +15,11 @@
   font-size: medium;
   &__span {
     font-weight: lighter;
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    margin-bottom: 10px;
   }
 }
