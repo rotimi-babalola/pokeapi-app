@@ -27,7 +27,7 @@ describe('<PokemonSpecies /> component', () => {
       pokemonSpeciesData.length,
     );
     expect(wrapper.find('.heading').exists()).toBeTruthy();
-    expect(wrapper.find('.heading').text()).toEqual('Pokemon Species');
+    expect(wrapper.find('.heading').text()).toEqual('Pokemon App');
   });
 
   it('shows error text', () => {

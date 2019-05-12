@@ -117,7 +117,7 @@ class PokemonSpecies extends React.Component {
 
     return (
       <React.Fragment>
-        <h1 className="heading">Pokemon Species</h1>
+        <h1 className="heading">Pokemon App</h1>
         <Controls
           onChange={this.handleChange}
           onInputChange={this.handleInputChange}
