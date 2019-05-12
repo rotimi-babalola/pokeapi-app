@@ -1,0 +1,25 @@
+.controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+}
+
+.form-control {
+  width: fit-content;
+}
+
+.select-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  p {
+    margin: 0;
+    font-size: large;
+  }
+}
+
+.select {
+  margin: 20px;
+}
