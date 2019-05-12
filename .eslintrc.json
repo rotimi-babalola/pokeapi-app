@@ -1,7 +1,8 @@
 {
     "extends": "airbnb",
     "env": {
-        "browser": true
+        "browser": true,
+        "jest": true
     },
     "rules": {
         "arrow-parens": "off",
@@ -12,6 +13,7 @@
         "operator-linebreak": "off",
         "implicit-arrow-linebreak": "off",
         "function-paren-newline": "off",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "react/jsx-filename-extension": "off"
     }
 }
