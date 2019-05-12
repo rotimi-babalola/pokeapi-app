@@ -107,17 +107,17 @@ class PokemonSpecies extends React.Component {
   }
 
   render() {
-    if (!this.state.pokemonSpecies.length) {
-      return <Loading />;
-    }
-
     if (this.state.error) {
       return <h1>An error occurred</h1>;
     }
 
+    if (!this.state.pokemonSpecies.length) {
+      return <Loading />;
+    }
+
     return (
       <React.Fragment>
-        <h1 className="heading">Pokemon Species</h1>
+        <h1 className="heading">Pokemon App</h1>
         <Controls
           onChange={this.handleChange}
           onInputChange={this.handleInputChange}

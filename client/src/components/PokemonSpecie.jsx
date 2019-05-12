@@ -34,7 +34,7 @@ class PokemonSpecie extends React.Component {
 
     try {
       const response = await pokeApiWrapper.getPokemonSpecie(searchQuery);
-      // workaround for prevent setState on unmounted component warning
+      // workaround to prevent setState on unmounted component warning
       if (this._isMounted) {
         this.setState({
           speciesData: response.data,
@@ -48,7 +48,6 @@ class PokemonSpecie extends React.Component {
   }
 
   componentWillUnmount() {
-    // pokeApiWrapper.cancelRequest();
     this._isMounted = false;
   }
 
@@ -60,12 +59,12 @@ class PokemonSpecie extends React.Component {
   renderCardContent() {
     const { showEvolutionButton, name } = this.props;
 
-    if (isEmpty(this.state.speciesData)) {
-      return <Loading size="small" />;
-    }
-
     if (this.state.error) {
       return <p>An error occurred fetching more data for this pokemon</p>;
+    }
+
+    if (isEmpty(this.state.speciesData)) {
+      return <Loading size="small" />;
     }
 
     const evolutionChainId = this.getEvolutionChainId();
