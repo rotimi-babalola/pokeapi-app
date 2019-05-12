@@ -59,12 +59,12 @@ class PokemonSpecie extends React.Component {
   renderCardContent() {
     const { showEvolutionButton, name } = this.props;
 
-    if (isEmpty(this.state.speciesData)) {
-      return <Loading size="small" />;
-    }
-
     if (this.state.error) {
       return <p>An error occurred fetching more data for this pokemon</p>;
+    }
+
+    if (isEmpty(this.state.speciesData)) {
+      return <Loading size="small" />;
     }
 
     const evolutionChainId = this.getEvolutionChainId();

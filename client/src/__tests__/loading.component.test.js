@@ -8,12 +8,12 @@ describe('<Loading /> component', () => {
   let wrapper = shallow(<Loading />);
 
   it('renders <Loading /> component', () => {
-    expect(wrapper.find('.loading-wrapper')).toBeTruthy();
+    expect(wrapper.find('.loading-wrapper').exists()).toBeTruthy();
     expect(wrapper.find('.sr-only').text()).toEqual('Loading...');
   });
 
   it('defaults to size large', () => {
-    expect(wrapper.find('.spinner-border.large')).toBeTruthy();
+    expect(wrapper.find('.spinner-border.large').exists()).toBeTruthy();
   });
 
   it('changes size', () => {
@@ -22,6 +22,6 @@ describe('<Loading /> component', () => {
     };
 
     wrapper = shallow(<Loading {...props} />);
-    expect(wrapper.find('.spinner-border.small')).toBeTruthy();
+    expect(wrapper.find('.spinner-border.small').exists()).toBeTruthy();
   });
 });

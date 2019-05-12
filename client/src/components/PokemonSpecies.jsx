@@ -107,12 +107,12 @@ class PokemonSpecies extends React.Component {
   }
 
   render() {
-    if (!this.state.pokemonSpecies.length) {
-      return <Loading />;
-    }
-
     if (this.state.error) {
       return <h1>An error occurred</h1>;
+    }
+
+    if (!this.state.pokemonSpecies.length) {
+      return <Loading />;
     }
 
     return (

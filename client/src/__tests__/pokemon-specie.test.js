@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import PokemonSpecie from '../components/PokemonSpecie';
 
-import pokemonSpecieData from '../mocks/pokemon-species';
+import pokemonSpecieData from '../mocks/pokemon-specie';
 
 describe('<PokemonSpecie /> component', () => {
   const props = {
@@ -15,7 +15,7 @@ describe('<PokemonSpecie /> component', () => {
   let wrapper = shallow(<PokemonSpecie {...props} />);
 
   afterEach(() => {
-    wrapper.setState({ speciesData: {} });
+    wrapper.setState({ speciesData: {}, error: false });
   });
 
   it('renders <PokemonSpecie /> component', () => {
@@ -26,8 +26,8 @@ describe('<PokemonSpecie /> component', () => {
 
   it('sets state', () => {
     wrapper.setState({ speciesData: pokemonSpecieData });
-    expect(wrapper.find('.card-text')).toBeTruthy();
-    expect(wrapper.find('.card-text__span')).toBeTruthy();
+    expect(wrapper.find('.card-text').exists()).toBeTruthy();
+    expect(wrapper.find('.card-text__span').exists()).toBeTruthy();
     expect(wrapper.find('.card-text').length).toEqual(4);
     expect(wrapper.find('.card-text__span').length).toEqual(4);
     expect(
@@ -52,5 +52,12 @@ describe('<PokemonSpecie /> component', () => {
     wrapper.setState({ speciesData: pokemonSpecieData });
 
     expect(wrapper.find('.btn.btn-primary').exists()).toBeFalsy();
+  });
+
+  it('shows error text', () => {
+    wrapper.setState({ error: true });
+    expect(wrapper.find('p').text()).toEqual(
+      'An error occurred fetching more data for this pokemon',
+    );
   });
 });
