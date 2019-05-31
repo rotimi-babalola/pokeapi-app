@@ -72,6 +72,12 @@ class PokemonSpecie extends React.Component {
     return (
       <React.Fragment>
         <p className="card-text">
+          Trigger Name:&nbsp;
+          <span className="card-text__span">
+            {this.props.triggerName || 'N/A'}
+          </span>
+        </p>
+        <p className="card-text">
           Color:&nbsp;
           <span className="card-text__span">
             {this.state.speciesData.color.name}
@@ -125,12 +131,14 @@ class PokemonSpecie extends React.Component {
 PokemonSpecie.defaultProps = {
   showEvolutionButton: true,
   url: null,
+  triggerName: null,
 };
 
 PokemonSpecie.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string,
   showEvolutionButton: PropTypes.bool,
+  triggerName: PropTypes.string,
 };
 
 export default PokemonSpecie;

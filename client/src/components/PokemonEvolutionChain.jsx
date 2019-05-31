@@ -54,6 +54,7 @@ class PokemonEvolutionChain extends React.Component {
               name={el.species_name}
               url={el.url}
               key={uniqueId()}
+              triggerName={el.trigger_name}
               showEvolutionButton={false}
             />
           ))}
